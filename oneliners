@@ -1,2 +1,3 @@
 i=1; while [ $i -lt 255 ]; do arping -c 1 10.78.100.$i; i=$[$i+1]; done
 
+cat ptm.lst |while read line; do echo $line |grep -E 'ptm.?2' |awk -F% '{print $2}' ; done
