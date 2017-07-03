@@ -1,9 +1,13 @@
-i=1; while [ $i -lt 255 ]; do arping -c 1 10.78.100.$i; i=$[$i+1]; done
-
 cat ptm.lst |while read line; do echo $line |grep -E 'ptm.?2' |awk -F% '{print $2}' ; done
 
 grep 'EGTS_PT_APPDATA\|EGTS_SMS_SERVICE\|EGTS_NIP_SERVICE\|EGTS_MSD_REQ\|Phone Number' dispatcher.log |grep -B 3 EGTS_MSD_REQ |grep -A 3 'Recipient Service Type      - 17' |grep 'Phone Number\|0x7ffc0c001d70' |sed '/Number/s/[^0-9]//g' |sed '/Packet/s/[^0-9\/\:\.\ ]//g' |cut -c -23 |head
 
-cat _____ |while read line; do ____ $line ; done
 
-(echo > /dev/tcp/10.77.4.30/5051) > /dev/null 2>&1 && echo "it's up" || echo "it's down"
+Для каждого $i по нарастающей выполнить:
+i=1; while [ $i -lt 255 ]; do arping -c1 10.78.100.$i; i=$[$i+1]; done
+
+Для каждой строки выполнить:
+cat _____ |while read line; do echo $line ; done
+
+Если нет ошибок выполнения - up:
+_CMD_ > /dev/null 2>&1 && echo "UP" || echo "DOWN"
