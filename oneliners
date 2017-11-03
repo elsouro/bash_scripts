@@ -12,3 +12,6 @@ _CMD_ > /dev/null 2>&1 && echo "UP" || echo "DOWN"
 
 сравнить два файла
 comm -123
+
+grep XML
+cat ISB.ESB2.log.2017-11-0* |egrep '<ns3:OrgId>51</ns3:OrgId>' |grep '<?xml'|while read LINE; do echo $LINE |grep -oPm1 "(?<=<ns3:Iccid>)[^<]+"; done
